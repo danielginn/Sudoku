@@ -11,6 +11,7 @@ private:
 	// Internal functions:
 	int** inputInitialValues();
 public:
+	int const SIZE = 4;
 	Sudoku();
 	Sudoku(int** newarr);
 

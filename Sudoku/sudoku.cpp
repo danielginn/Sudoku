@@ -11,9 +11,9 @@ Sudoku::Sudoku() {
 }
 
 Sudoku::Sudoku(int** newarr) {
-	for (int m = 0; m < 9; m++)
+	for (int m = 0; m < Sudoku::SIZE; m++)
 	{
-		for (int n = 0; n < 9; n++)
+		for (int n = 0; n < Sudoku::SIZE; n++)
 		{
 			Sudoku::arr[m][n] = newarr[m][n];
 		}
@@ -22,22 +22,24 @@ Sudoku::Sudoku(int** newarr) {
 
 int** Sudoku::inputInitialValues() {
 	cout << "Initial values of sudoku puzzle:" << endl;
-	cout << "Please enter first row separated by commas: ";
+	cout << "Please enter rows separated by commas: ";
 	string input;
-	int** input_arr = new int* [9];
-	input_arr[0] = new int[9];
-	for (int i = 0; i < 8; i++) {
-		std::getline(cin, input, ',');
-		input_arr[0][i] = stoi(input);
+	int** input_arr = new int* [Sudoku::SIZE];
+	for (int m = 0; m < Sudoku::SIZE; m++) {
+		input_arr[m] = new int[Sudoku::SIZE];
+		for (int n = 0; n < Sudoku::SIZE - 1; n++) {
+			std::getline(cin, input, ',');
+			input_arr[m][n] = stoi(input);
+		}
+		std::getline(cin, input);
+		input_arr[m][Sudoku::SIZE-1] = stoi(input);
 	}
-	std::getline(cin, input);
-	input_arr[0][8] = stoi(input);
 	return input_arr;
 }
 
 string Sudoku::print() {
 	string output = "";
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < Sudoku::SIZE; i++)
 	{
 		output += to_string(Sudoku::arr[0][i]);
 		output += " ";
