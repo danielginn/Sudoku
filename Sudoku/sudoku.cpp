@@ -6,17 +6,7 @@
 using namespace std;
 
 Sudoku::Sudoku() {
-	cout << "Initial values of sudoku puzzle:" << endl;
-	cout << "Please enter first row separated by commas: ";
-	string input;
-	int** input_arr = new int*[9];
-	input_arr[0] = new int[9];
-	for (int i = 0; i < 8; i++) {
-		std::getline(cin, input, ',');
-		input_arr[0][i] = stoi(input);
-	}
-	std::getline(cin, input);
-	input_arr[0][8] = stoi(input);
+	int** input_arr = Sudoku::inputInitialValues();
 	this->Sudoku::Sudoku(input_arr);
 }
 
@@ -30,7 +20,20 @@ Sudoku::Sudoku(int** newarr) {
 	}
 }
 
-	
+int** Sudoku::inputInitialValues() {
+	cout << "Initial values of sudoku puzzle:" << endl;
+	cout << "Please enter first row separated by commas: ";
+	string input;
+	int** input_arr = new int* [9];
+	input_arr[0] = new int[9];
+	for (int i = 0; i < 8; i++) {
+		std::getline(cin, input, ',');
+		input_arr[0][i] = stoi(input);
+	}
+	std::getline(cin, input);
+	input_arr[0][8] = stoi(input);
+	return input_arr;
+}
 
 string Sudoku::print() {
 	string output = "";

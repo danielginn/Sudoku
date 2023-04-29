@@ -9,7 +9,7 @@ private:
 	int arr[9][9];
 
 	// Internal functions:
-	void inputInitialValues();
+	int** inputInitialValues();
 public:
 	Sudoku();
 	Sudoku(int** newarr);
