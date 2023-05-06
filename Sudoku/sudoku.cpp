@@ -47,7 +47,7 @@ string Sudoku::getRow(int m) {
 		if (Sudoku::arr[m][n] != -1)
 			output += to_string(Sudoku::arr[m][n]);
 		else
-			output += "_";
+			output += ".";
 		output += " ";
 	}
 	return output;
@@ -55,13 +55,34 @@ string Sudoku::getRow(int m) {
 
 string Sudoku::print() {
 	string output = "";
-	for (int i = 0; i < Sudoku::SIZE; i++)
-	{
-		if (Sudoku::arr[0][i] != -1)
-			output += to_string(Sudoku::arr[0][i]);
-		else
-			output += "_";
-		output += " ";
+	int charWidth = 2 * (Sudoku::SIZE + Sudoku::MAJ_VERT_GRIDS) + 1;
+	
+
+	// iterate down the rows
+	for (int m = 0; m < Sudoku::SIZE; m++) {
+		// check if we need to add a horizontal line
+		if (m % Sudoku::MAJ_VERT_GRIDS == 0) {
+			for (int i = 0; i < charWidth; i++) output += "-";
+			output += "\n";
+		}
+
+		// add a line of numbers
+		for (int n = 0; n < Sudoku::SIZE; n++)
+		{
+			// add verticle line
+			if (n % Sudoku::MAJ_VERT_GRIDS == 0) output += "| ";
+
+			if (Sudoku::arr[m][n] != -1)
+				output += to_string(Sudoku::arr[m][n]);
+			else
+				output += ".";
+			output += " ";
+		}
+		output += "|\n";
 	}
+
+	// add bottom line
+	for (int i = 0; i < charWidth; i++) output += "-";
+	output += "\n";
 	return output;
 }

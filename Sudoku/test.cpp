@@ -35,9 +35,16 @@ TEST(TestSudoku, TestSecondConstructor) {
 //	EXPECT_EQ(output, "1 2 3 4 ");
 //}
 
+TEST(TestSudoku, TestPrint) {
+	Sudoku puzzle = Sudoku();
+	string output = puzzle.print();
+	std::cout << output;
+	EXPECT_EQ(1, 1);
+}
+
 TEST(TestSudoku, TestBlankInputs) {
 	initializeTestArrWithABlank();
 	Sudoku puzzle = Sudoku(testarr);
 	string output = puzzle.getRow(0);
-	EXPECT_EQ(output, "1 _ 3 4 ");
+	EXPECT_EQ(output, "1 . 3 4 ");
 }

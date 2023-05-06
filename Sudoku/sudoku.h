@@ -12,6 +12,8 @@ private:
 	int** inputInitialValues();
 public:
 	int const SIZE = 4;
+	int const MAJ_VERT_GRIDS = 2;
+	int const MAJ_HORZ_GRIDS = 2;
 	Sudoku();
 	Sudoku(int** newarr);
 
