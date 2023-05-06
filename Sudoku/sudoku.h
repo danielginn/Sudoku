@@ -7,9 +7,11 @@ class Sudoku {
 private:
 	// Member variables:
 	int arr[9][9];
+	int checkSum;
 
 	// Internal functions:
 	int** inputInitialValues();
+	void calculateChecksum();
 	
 public:
 	int const SIZE = 4;

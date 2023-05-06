@@ -18,20 +18,27 @@ Sudoku::Sudoku(int** newarr) {
 			Sudoku::arr[m][n] = newarr[m][n];
 		}
 	}
+	calculateChecksum();
+}
+
+void Sudoku::calculateChecksum() {
+	int checkSum = 0;
+	int counter = 1;
+	int boxWidth = Sudoku::SIZE / Sudoku::MAJ_HORZ_GRIDS;
+	for (int i = 0; i < boxWidth * boxWidth; i++)
+		checkSum += counter++;
+	Sudoku::checkSum = checkSum;
 }
 
 bool Sudoku::checkBox(int mb, int nb) {
-	int boxChecksum = 0;
-	int counter = 1;
 	int sum = 0;
-	int num_per_box = Sudoku::SIZE / Sudoku::MAJ_HORZ_GRIDS;
-	for (int m = mb * num_per_box; m < num_per_box*(mb + 1); m++) {
-		for (int n = nb * num_per_box; n < num_per_box*(nb + 1); n++) {
-			boxChecksum += counter++;
+	int boxWidth = Sudoku::SIZE / Sudoku::MAJ_HORZ_GRIDS;
+	for (int m = mb * boxWidth; m < boxWidth*(mb + 1); m++) {
+		for (int n = nb * boxWidth; n < boxWidth*(nb + 1); n++) {
 			sum += arr[m][n];
 		}
 	}
-	if (sum == boxChecksum)
+	if (sum == Sudoku::checkSum)
 		return true;
 	else
 		return false;
