@@ -16,6 +16,12 @@ void initializeTestArr()
 	}
 }
 
+void initializeTestArrWithABlank()
+{
+	initializeTestArr();
+	testarr[0][1] = -1;
+}
+
 TEST(TestSudoku, TestSecondConstructor) {
 	initializeTestArr();
 	Sudoku puzzle = Sudoku(testarr);
@@ -23,8 +29,15 @@ TEST(TestSudoku, TestSecondConstructor) {
 	EXPECT_EQ(output, "1 2 3 4 ");
 }
 
-TEST(TestSudoku, TestInputs) {
-	Sudoku puzzle = Sudoku();
+//TEST(TestSudoku, TestInputs) {
+//	Sudoku puzzle = Sudoku();
+//	string output = puzzle.print();
+//	EXPECT_EQ(output, "1 2 3 4 ");
+//}
+
+TEST(TestSudoku, TestBlankInputs) {
+	initializeTestArrWithABlank();
+	Sudoku puzzle = Sudoku(testarr);
 	string output = puzzle.print();
-	EXPECT_EQ(output, "1 2 3 4 ");
+	EXPECT_EQ(output, "1 _ 3 4 ");
 }

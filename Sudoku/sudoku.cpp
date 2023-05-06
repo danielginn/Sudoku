@@ -29,7 +29,10 @@ int** Sudoku::inputInitialValues() {
 		input_arr[m] = new int[Sudoku::SIZE];
 		for (int n = 0; n < Sudoku::SIZE - 1; n++) {
 			std::getline(cin, input, ',');
-			input_arr[m][n] = stoi(input);
+			if ((input.empty()) || (input.compare(" ")  == 0))
+				input_arr[m][n] = -1;
+			else
+				input_arr[m][n] = stoi(input);
 		}
 		std::getline(cin, input);
 		input_arr[m][Sudoku::SIZE-1] = stoi(input);
@@ -41,7 +44,10 @@ string Sudoku::print() {
 	string output = "";
 	for (int i = 0; i < Sudoku::SIZE; i++)
 	{
-		output += to_string(Sudoku::arr[0][i]);
+		if (Sudoku::arr[0][i] != -1)
+			output += to_string(Sudoku::arr[0][i]);
+		else
+			output += "_";
 		output += " ";
 	}
 	return output;
