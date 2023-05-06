@@ -25,19 +25,19 @@ void initializeTestArrWithABlank()
 TEST(TestSudoku, TestSecondConstructor) {
 	initializeTestArr();
 	Sudoku puzzle = Sudoku(testarr);
-	string output = puzzle.print();
+	string output = puzzle.getRow(0);
 	EXPECT_EQ(output, "1 2 3 4 ");
 }
 
 //TEST(TestSudoku, TestInputs) {
 //	Sudoku puzzle = Sudoku();
-//	string output = puzzle.print();
+//	string output = puzzle.getRow(0);
 //	EXPECT_EQ(output, "1 2 3 4 ");
 //}
 
 TEST(TestSudoku, TestBlankInputs) {
 	initializeTestArrWithABlank();
 	Sudoku puzzle = Sudoku(testarr);
-	string output = puzzle.print();
+	string output = puzzle.getRow(0);
 	EXPECT_EQ(output, "1 _ 3 4 ");
 }

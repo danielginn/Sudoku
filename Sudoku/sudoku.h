@@ -23,5 +23,7 @@ public:
 		return arr[m][n];
 	}
 
+	string getRow(int m);
+
 	string print();
 };

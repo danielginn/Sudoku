@@ -40,6 +40,19 @@ int** Sudoku::inputInitialValues() {
 	return input_arr;
 }
 
+string Sudoku::getRow(int m) {
+	string output = "";
+	for (int n = 0; n < Sudoku::SIZE; n++)
+	{
+		if (Sudoku::arr[m][n] != -1)
+			output += to_string(Sudoku::arr[m][n]);
+		else
+			output += "_";
+		output += " ";
+	}
+	return output;
+}
+
 string Sudoku::print() {
 	string output = "";
 	for (int i = 0; i < Sudoku::SIZE; i++)
