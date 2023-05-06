@@ -10,13 +10,14 @@ private:
 
 	// Internal functions:
 	int** inputInitialValues();
+	
 public:
 	int const SIZE = 4;
 	int const MAJ_VERT_GRIDS = 2;
 	int const MAJ_HORZ_GRIDS = 2;
 	Sudoku();
 	Sudoku(int** newarr);
-
+	bool checkBox(int mb, int nb);
 	void set(int m, int n, int value) {
 		arr[m][n] = value;
 	}

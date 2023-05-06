@@ -22,6 +22,11 @@ void initializeTestArrWithABlank()
 	testarr[0][1] = -1;
 }
 
+void initializeTestArrCompleteTopRightBox() {
+	initializeTestArr();
+	testarr[1][0] = 4;
+}
+
 TEST(TestSudoku, TestSecondConstructor) {
 	initializeTestArr();
 	Sudoku puzzle = Sudoku(testarr);
@@ -35,16 +40,26 @@ TEST(TestSudoku, TestSecondConstructor) {
 //	EXPECT_EQ(output, "1 2 3 4 ");
 //}
 
-TEST(TestSudoku, TestPrint) {
-	Sudoku puzzle = Sudoku();
-	string output = puzzle.print();
-	std::cout << output;
-	EXPECT_EQ(1, 1);
-}
+//TEST(TestSudoku, TestPrint) {
+//	Sudoku puzzle = Sudoku();
+//	string output = puzzle.print();
+//	std::cout << output;
+//	EXPECT_EQ(1, 1);
+//}
 
 TEST(TestSudoku, TestBlankInputs) {
 	initializeTestArrWithABlank();
 	Sudoku puzzle = Sudoku(testarr);
 	string output = puzzle.getRow(0);
 	EXPECT_EQ(output, "1 . 3 4 ");
+}
+
+TEST(TestSudoku, TestTopLeftCompleteBox) {
+	//initializeTestArr();
+	initializeTestArrCompleteTopRightBox();
+	Sudoku puzzle = Sudoku(testarr);
+	if (puzzle.checkBox(0,0))
+		EXPECT_EQ(1, 1);
+	else
+		EXPECT_EQ(1, 0);
 }

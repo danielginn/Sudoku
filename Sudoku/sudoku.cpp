@@ -20,6 +20,23 @@ Sudoku::Sudoku(int** newarr) {
 	}
 }
 
+bool Sudoku::checkBox(int mb, int nb) {
+	int boxChecksum = 0;
+	int counter = 1;
+	int sum = 0;
+	int num_per_box = Sudoku::SIZE / Sudoku::MAJ_HORZ_GRIDS;
+	for (int m = mb * num_per_box; m < num_per_box*(mb + 1); m++) {
+		for (int n = nb * num_per_box; n < num_per_box*(nb + 1); n++) {
+			boxChecksum += counter++;
+			sum += arr[m][n];
+		}
+	}
+	if (sum == boxChecksum)
+		return true;
+	else
+		return false;
+}
+
 int** Sudoku::inputInitialValues() {
 	cout << "Initial values of sudoku puzzle:" << endl;
 	cout << "Please enter rows separated by commas: ";
